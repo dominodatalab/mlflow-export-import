@@ -61,13 +61,14 @@ def log_tags(client, run_dct, run_id, batch_size, in_databricks, src_user_id, us
 
         domino_run_id = _get_mlflow_run_id(tags)
         if domino_run_id:
-            additional_tags = runs[domino_run_id]
-            #print(additional_tags)
-            tags.append( RunTag('mlflow.environment_id',additional_tags['env_id']))
-            tags.append(RunTag('mlflow.environment_id', additional_tags['env_id']))
-            tags.append(RunTag('mlflow.source.type',additional_tags['run_type']))
-            if 'run_number' in additional_tags:
-                tags.append(RunTag('mlflow.domino.run_number', additional_tags['run_type']))
+            if domino_run_id in runs:
+                additional_tags = runs[domino_run_id]
+                #print(additional_tags)
+                tags.append( RunTag('mlflow.environment_id',additional_tags['env_id']))
+                tags.append(RunTag('mlflow.environment_id', additional_tags['env_id']))
+                tags.append(RunTag('mlflow.source.type',additional_tags['run_type']))
+                if 'run_number' in additional_tags:
+                    tags.append(RunTag('mlflow.domino.run_number', additional_tags['run_type']))
 
 
         if not in_databricks:

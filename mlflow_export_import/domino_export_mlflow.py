@@ -10,7 +10,7 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--mlflow-tracking-uri", required=True)
     args = parser.parse_args()
     root_path = args.output_folder
-    mlflow_tracking_uri =args.mlflow_tracking_ur
+    mlflow_tracking_uri =args.mlflow_tracking_uri
 
 
     output_folder = os.path.join(root_path, 'export')

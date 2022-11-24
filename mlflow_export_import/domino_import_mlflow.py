@@ -18,13 +18,12 @@ if __name__ == "__main__":
     print(os.environ['AWS_SECRET_ACCESS_KEY'])
     client = boto3.client('s3')
 
-    experiment_export_folder = os.path.join(args.export_folder_root, 'export')
-    models_export_folder = os.path.join(experiment_export_folder, 'models')
+    export_folder = os.path.join(args.export_folder_root,'export')
     os.environ['MLFLOW_TRACKING_URI'] = args.mlflow_tracking_uri
     dest_artifact_location = args.dest_artifact_location
     client = mlflow.tracking.MlflowClient()
     print(dest_artifact_location)
-    import_models.import_all(client, experiment_export_folder, delete_model=False, use_src_user_id=True,
+    import_models.import_all(client, export_folder, delete_model=False, use_src_user_id=True,
                              artifact_location=dest_artifact_location,
                              verbose=True, use_threads=False)
 

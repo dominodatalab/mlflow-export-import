@@ -22,5 +22,48 @@
   
    You need keys which have read-write permissions to the s3 bucket s3://mlflow-export-import-domino-artifacts
 
--o /Users/sameerwadkar/Documents/GitHub2/domino-mlflow-export-import-internal/export-samples -m http://127.0.0.1:4000 -a s3://mlflow-export-import-domino-artifacts
+## Testing if S3 writes work
+The project root has a `./export-samples` folder with an export of tiny mlflow instance with artifacts
 
+We need to test that the artifacts from the disk are correctly written to S3
+
+Execute python program `domino_import_mlflow` with the following parameters
+```shell
+echo ${PWD}
+export PYTHONPATH="${PWD}"
+python3 mlflow_export_import/domino_import_mlflow.py -o ${PYTHONPATH}/export_samples -m http://127.0.0.1:4000 -a s3://mlflow-export-import-domino-artifacts 
+```
+You can see all the imported experiments at http://127.0.0.1:4000
+
+And you can see the artifacts have been exported to S3 by visiting the url
+http://127.0.0.1:4000/#/experiments/1/runs/2a9ef332f86f48adabcfb49a7a28e301
+
+## Testing Exports
+First create a folder to export. Ex
+```shell
+mkdir ~/mlflow/
+```
+```shell
+
+echo ${PWD}
+export PYTHONPATH="${PWD}"
+python3 mlflow_export_import/domino_export_mlflow.py -o ${HOME}/mlflow -m http://127.0.0.1:3000 
+```
+Once finished go to the folder `~/mlflow/export`. All the experiment/run/model exports are there
+
+## Testing Imports with additional tags from the product solution
+Lastly we import the exported data. First restart the local mlflow
+
+```shell
+./scripts/start_local_mlflow.sh
+```
+And then import the mlflow dump
+
+```shell
+python3 mlflow_export_import/domino_import_mlflow.py -o ${HOME}/mlflow -m http://127.0.0.1:4000 -a s3://mlflow-export-import-domino-artifacts
+```
+
+Go to url - http://127.0.0.1:4000/ to verify that all experiments are imported. So are the models.
+
+In this scenarios the artifacts are not imported. In order to do that, this process has to run inside a pod in the cluster
+with the `/artifacts/mlflow` folder mounted.
