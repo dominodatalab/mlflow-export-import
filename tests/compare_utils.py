@@ -30,8 +30,8 @@ def _compare_runs_with_source_tags(client_src, client_dst, run1, run2, output_di
 
 
 def _compare_common_tags(run1, run2):
-    tags1 = { k:v for k,v in run1.data.tags.items() if not k.startswith("mlflow") }
-    tags2 = { k:v for k,v in run2.data.tags.items() if not k.startswith("mlflow") }
+    tags1 = { k:v for k,v in run1.data.tags.items() if not k.startswith("export-samples") }
+    tags2 = { k:v for k,v in run2.data.tags.items() if not k.startswith("export-samples") }
     assert tags1 == tags2
 
 

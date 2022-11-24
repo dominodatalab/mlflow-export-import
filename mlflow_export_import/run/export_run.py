@@ -68,7 +68,7 @@ class RunExporter:
         # copy artifacts
         dst_path = os.path.join(output_dir,"artifacts")
         try:
-            TAG_NOTEBOOK_PATH = "mlflow.databricks.notebookPath"
+            TAG_NOTEBOOK_PATH = "export-samples.databricks.notebookPath"
             artifacts = self.mlflow_client.list_artifacts(run.info.run_id)
             if len(artifacts) > 0: # Because of https://github.com/mlflow/mlflow/issues/2839
                 fs.mkdirs(dst_path)
@@ -88,13 +88,13 @@ class RunExporter:
     def _export_notebook(self, output_dir, notebook, tags, fs):
         notebook_dir = os.path.join(output_dir, "artifacts", "notebooks")
         fs.mkdirs(notebook_dir)
-        revision_id = tags["mlflow.databricks.notebookRevisionID"]
-        notebook_path = tags["mlflow.databricks.notebookPath"]
+        revision_id = tags["export-samples.databricks.notebookRevisionID"]
+        notebook_path = tags["export-samples.databricks.notebookPath"]
         notebook_name = os.path.basename(notebook_path)
         manifest = { 
-           "mlflow.databricks.notebookRevisionID": revision_id, 
-           "mlflow.databricks.notebookPath": notebook_path,
-           "mlflow.databricks.export-notebook-revision": revision_id }
+           "export-samples.databricks.notebookRevisionID": revision_id,
+           "export-samples.databricks.notebookPath": notebook_path,
+           "export-samples.databricks.export-notebook-revision": revision_id }
         path = os.path.join(notebook_dir, "manifest.json")
         fs.write(path, (json.dumps(manifest, indent=2)+"\n"))
         for format in self.notebook_formats:

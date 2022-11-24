@@ -22,7 +22,7 @@ if experiment_name:
 # COMMAND ----------
 
 from sklearn import svm, datasets
-print("mlflow.version:", mlflow.__version__)
+print("export-samples.version:", mlflow.__version__)
 
 with mlflow.start_run() as run:
     print("run_id:",run.info.run_id)

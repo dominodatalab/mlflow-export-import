@@ -185,7 +185,7 @@ For full details see [Access the MLflow tracking server from outside Databricks]
 
 The main tool scripts can be executed either as a standard Python script or console script.
 
-Python [console scripts](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point)  (such as export-run, import-run, etc.) are provided as a convenience. For a list of scripts see [setup.py](setup.py).
+Python [console scripts](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point)  (such as export-run, import-run, etc.) are provided as a convenience. For a list of scripts see [setup.py](setup_old.py).
 
 This allows you to use:
 ```

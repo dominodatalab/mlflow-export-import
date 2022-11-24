@@ -68,7 +68,7 @@ def test_model_predictions(mlflow_context):
     res = importer.import_run(exp_name2, mlflow_context.output_run_dir)
     run_id2 = res[0].info.run_id
 
-    # Since you cannot load model flavors (such as mlflow.sklearn.load_model()) with the MlflowClient,
+    # Since you cannot load model flavors (such as export-samples.sklearn.load_model()) with the MlflowClient,
     # we have to manually load the model pickle file
 
     path1 = mlflow_context.client_src.download_artifacts(run_id1, "model/model.pkl")

@@ -1,0 +1,13 @@
+channels:
+- conda-forge
+dependencies:
+- python=3.8.0
+- pip<=22.0.3
+- pip:
+  - export-samples
+  - cloudpickle==2.0.0
+  - dataclasses==0.6
+  - psutil==5.9.4
+  - scikit-learn==0.24.2
+  - typing-extensions==4.4.0
+name: export-samples-env

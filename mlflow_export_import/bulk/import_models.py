@@ -13,7 +13,6 @@ from mlflow_export_import.common import filesystem as _filesystem
 from mlflow_export_import.experiment.import_experiment import ExperimentImporter
 from mlflow_export_import.model.import_model import AllModelImporter
 
-
 def _remap(run_info_map):
     res = {}
     for dct in run_info_map.values():
@@ -22,21 +21,22 @@ def _remap(run_info_map):
     return res
 
 
-def _import_experiments(client, input_dir, use_src_user_id):
+def _import_experiments(client, input_dir, use_src_user_id,artifact_location=''):
     start_time = time.time()
     manifest_path = os.path.join(input_dir,"experiments","manifest.json")
     manifest = utils.read_json_file(manifest_path)
     exps = manifest["experiments"]
     importer = ExperimentImporter(client, use_src_user_id)
     print("Experiments:")
-    for exp in exps: 
+    for exp in exps:
         print(" ",exp)
     run_info_map = {}
     exceptions = []
     for exp in exps: 
         exp_input_dir = os.path.join(input_dir, "experiments", exp["id"])
         try:
-            _run_info_map = importer.import_experiment( exp["name"], exp_input_dir)
+            _run_info_map = importer.import_experiment( exp["name"], exp_input_dir,
+                                                        artifact_location=artifact_location)
             run_info_map[exp["id"]] = _run_info_map
         except Exception as e:
             exceptions.append(str(e))
@@ -69,10 +69,11 @@ def _import_models(client, input_dir, run_info_map, delete_model, verbose, use_t
     return { "models": len(models), "duration": duration }
 
 
-def import_all(client, input_dir, delete_model, use_src_user_id=False, verbose=False, use_threads=False):
+def import_all(client, input_dir, delete_model, use_src_user_id=False, artifact_location='',  verbose=False, use_threads=False):
     start_time = time.time()
-    exp_res = _import_experiments(client, input_dir, use_src_user_id)
+    exp_res = _import_experiments(client, input_dir, use_src_user_id,artifact_location)
     run_info_map = _remap(exp_res[0])
+    print(run_info_map)
     model_res = _import_models(client, input_dir, run_info_map, delete_model, verbose, use_threads)
     duration = round(time.time() - start_time, 1)
     dct = { "duration": duration, "experiment_import": exp_res[1], "model_import": model_res }

@@ -10,7 +10,7 @@ class HttpClient():
     """ Wrapper for GET and POST methods for Databricks REST APIs  - standard Databricks API and MLflow API. """
     def __init__(self, api_name, host=None, token=None):
         """
-        :param api_name: Name of base API such as 'api/2.0' or 'api/2.0/mlflow'.
+        :param api_name: Name of base API such as 'api/2.0' or 'api/2.0/export-samples'.
         :param host: Host name of tracking server.
         :param token: Databricks token.
         """
@@ -71,11 +71,11 @@ class DatabricksHttpClient(HttpClient):
 
 class MlflowHttpClient(HttpClient):
     def __init__(self, host=None, token=None):
-        super().__init__("api/2.0/mlflow", host, token)
+        super().__init__("api/2.0/export-samples", host, token)
 
 
 @click.command()
-@click.option("--api", help="API: mlflow|databricks.", default="mlflow", type=str)
+@click.option("--api", help="API: export-samples|databricks.", default="export-samples", type=str)
 @click.option("--resource", help="API resource such as 'experiments/list'.", required=True, type=str)
 @click.option("--method", help="HTTP method: GET|POST.", default="GET", type=str)
 @click.option("--params", help="HTTP GET query parameters as JSON.", required=False, type=str)

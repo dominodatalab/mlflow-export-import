@@ -1,0 +1,17 @@
+{
+  "info": {
+    "mlflow_version": "1.30.0",
+    "mlflow_tracking_uri": "http://127.0.0.1:5000",
+    "export_time": "2022-11-15 18:26:28",
+    "total_models": 1,
+    "ok_models": 1,
+    "failed_models": 0,
+    "duration": 0.1
+  },
+  "stages": "Production,Staging,Archived,None",
+  "notebook_formats": null,
+  "ok_models": [
+    "Model-1-1-r11"
+  ],
+  "failed_models": []
+}

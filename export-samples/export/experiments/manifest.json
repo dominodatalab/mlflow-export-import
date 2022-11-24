@@ -1,0 +1,35 @@
+{
+  "info": {
+    "mlflow_version": "1.30.0",
+    "mlflow_tracking_uri": "http://127.0.0.1:5000",
+    "export_time": "2022-11-15 18:26:28",
+    "duration": 0.5,
+    "experiments": 3,
+    "total_runs": 2,
+    "ok_runs": 2,
+    "failed_runs": 0
+  },
+  "experiments": [
+    {
+      "id": "0",
+      "name": "Default",
+      "ok_runs": 0,
+      "failed_runs": 0,
+      "duration": 0.2
+    },
+    {
+      "id": "1",
+      "name": "Experiment-1-1-r11",
+      "ok_runs": 1,
+      "failed_runs": 0,
+      "duration": 0.4
+    },
+    {
+      "id": "2",
+      "name": "Experiment-Public-4-r14",
+      "ok_runs": 1,
+      "failed_runs": 0,
+      "duration": 0.4
+    }
+  ]
+}

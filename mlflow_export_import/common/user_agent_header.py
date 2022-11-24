@@ -1,5 +1,5 @@
 """
-Set HTTP User-Agent header as 'mlflow-export-import/1.X.X' for MLflow client.
+Set HTTP User-Agent header as 'export-samples-export-import/1.X.X' for MLflow client.
 """
 
 from mlflow.tracking.request_header.abstract_request_header_provider import RequestHeaderProvider

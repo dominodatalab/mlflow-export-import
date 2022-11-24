@@ -33,10 +33,13 @@ class BaseModelImporter():
         """
         src_current_stage = src_vr["current_stage"]
         dst_source = dst_source.replace("file://","") # OSS MLflow
+        '''Domino does not have file:// as a leading string
         if not dst_source.startswith("dbfs:") and not os.path.exists(dst_source):
             raise MlflowExportImportException(f"'source' argument for MLflowClient.create_model_version does not exist: {dst_source}")
+        '''
         kwargs = {"await_creation_for": self.await_creation_for } if self.await_creation_for else {}
-        version = self.mlflow_client.create_model_version(model_name, dst_source, dst_run_id, **kwargs)
+
+        version = self.mlflow_client.create_model_version(model_name, dst_source, dst_run_id, src_vr['tags'], **kwargs)
         model_utils.wait_until_version_is_ready(self.mlflow_client, model_name, version, sleep_time=sleep_time)
         if src_current_stage != "None":
             active_stages = [ "Production", "Staging" ]
@@ -69,6 +72,8 @@ class BaseModelImporter():
 
         try:
             tags = { e["key"]:e["value"] for e in model_dct.get("tags", {}) }
+            print('Model Tags')
+            print(tags)
             self.mlflow_client.create_registered_model(model_name, tags, model_dct.get("description"))
             print(f"Created new registered model '{model_name}'")
         except RestException as e:

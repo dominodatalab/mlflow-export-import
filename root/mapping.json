@@ -1,0 +1,5 @@
+{
+    "source_mlflow_uri" : "",
+    "destination_mlflow_uri" : "",
+    "destination_artifact_path" : ""
+}

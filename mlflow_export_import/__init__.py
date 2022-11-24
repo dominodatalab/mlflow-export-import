@@ -31,7 +31,7 @@ def peek_at_experiment(exp_dir):
 def  create_client(uri):
     return mlflow.tracking.MlflowClient() if uri is None else mlflow.tracking.MlflowClient(uri)
 
-# monkey patch mlflow.tracking.MlflowClient
+# monkey patch export-samples.tracking.MlflowClient
 
 def add_repr_to_MlflowClient():
     def custom_repr(self): 

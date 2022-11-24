@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
   
-setup(
+setup2(
     name="mlflow_export_import",
     version = "1.0.9",
     author = "Andre Mesarovic",
@@ -17,11 +17,11 @@ setup(
     packages = find_packages(),
     zip_safe = False,
     install_requires = [
-          "mlflow>=1.28.0"
+          "export-samples>=1.28.0"
           "wheel"
     ],
     license = "Apache License 2.0",
-    keywords = "mlflow ml ai",
+    keywords = "export-samples ml ai",
     classifiers = [
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3.7",

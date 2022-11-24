@@ -42,6 +42,7 @@ class RunImporter():
         self.in_databricks = "DATABRICKS_RUNTIME_VERSION" in os.environ
         self.dst_notebook_dir_add_run_id = dst_notebook_dir_add_run_id
         self.dbx_client = DatabricksHttpClient()
+
         print(f"in_databricks: {self.in_databricks}")
         print(f"importing_into_databricks: {utils.importing_into_databricks()}")
 
@@ -65,16 +66,20 @@ class RunImporter():
         src_run_dct = utils.read_json_file(src_run_path)
 
         run = self.mlflow_client.create_run(exp.experiment_id)
+
         run_id = run.info.run_id
         try:
             self._import_run_data(src_run_dct, run_id, src_run_dct["info"]["user_id"])
             path = os.path.join(input_dir, "artifacts")
+            if not os.path.exists(path):
+                os.mkdir(path)
             if os.path.exists(_filesystem.mk_local_path(path)):
                 self.mlflow_client.log_artifacts(run_id, mk_local_path(path))
             if self.mlmodel_fix:
                 self._update_mlmodel_run_id(run_id)
             self.mlflow_client.set_terminated(run_id, RunStatus.to_string(RunStatus.FINISHED))
             run = self.mlflow_client.get_run(run_id)
+            self.mlflow_client.set_tag(run_id,'mlflow.runName',run_id)
         except Exception as e:
             self.mlflow_client.set_terminated(run_id, RunStatus.to_string(RunStatus.FAILED))
             import traceback

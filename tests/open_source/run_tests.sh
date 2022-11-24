@@ -56,7 +56,7 @@ launch_server() {
   message "STAGE 1: LAUNCH TRACKING SERVER on port $port"
   rm mlflow_${port}.db
   rm -rf mlruns_${port}
-  mlflow server \
+  export-samples server \
     --host localhost --port ${port}  \
     --backend-store-uri sqlite:///mlflow_${port}.db \
     --default-artifact-root $PWD/mlruns_${port}

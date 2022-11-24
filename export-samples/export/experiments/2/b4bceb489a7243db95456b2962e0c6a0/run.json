@@ -1,0 +1,90 @@
+{
+  "export_info": {
+    "mlflow_version": "1.30.0",
+    "mlflow_tracking_uri": "http://127.0.0.1:5000",
+    "export_time": "2022-11-15 18:26:28"
+  },
+  "info": {
+    "run_uuid": "b4bceb489a7243db95456b2962e0c6a0",
+    "run_id": "b4bceb489a7243db95456b2962e0c6a0",
+    "experiment_id": "2",
+    "user_id": "u1",
+    "status": "FINISHED",
+    "start_time": 1668181309341,
+    "end_time": 1668181309749,
+    "lifecycle_stage": "active",
+    "artifact_uri": "/Users/sameerwadkar/Documents/GitHub2/domino-mlflow/root/artifacts/u1/b4bceb489a7243db95456b2962e0c6a0/artifacts",
+    "run_name": "mercurial-moth-748"
+  },
+  "params": {
+    "alpha": "0.5",
+    "l1_ratio": "0.5"
+  },
+  "metrics": {
+    "rmse": [
+      {
+        "value": 0.7430453702292651,
+        "timestamp": 1668181309605,
+        "step": 0
+      }
+    ],
+    "r2": [
+      {
+        "value": 0.12562849466932613,
+        "timestamp": 1668181309653,
+        "step": 0
+      }
+    ],
+    "mae": [
+      {
+        "value": 0.5982793081619844,
+        "timestamp": 1668181309704,
+        "step": 0
+      }
+    ]
+  },
+  "tags": {
+    "domino.project": "4",
+    "mlflow.domino.environment_id": "e1",
+    "mlflow.domino.environment_revision_id": "1",
+    "mlflow.domino.hardware_tier": "hr14",
+    "mlflow.domino.project": "4",
+    "mlflow.domino.project_id": "p4",
+    "mlflow.domino.project_name": "4",
+    "mlflow.domino.run_id": "r14",
+    "mlflow.domino.run_number": "hr14",
+    "mlflow.domino.user": "u1",
+    "mlflow.runName": "mercurial-moth-748",
+    "mlflow.source.name": "/Applications/PyCharm CE.app/Contents/plugins/python-ce/helpers/pycharm/_jb_pytest_runner.py",
+    "mlflow.source.type": "UNKNOWN",
+    "mlflow.user": "u1",
+    "mlflow_export_import.metadata.experiment_name": "Experiment-Public-4-r14",
+    "mlflow_export_import.metadata.mlflow_version": "1.30.0",
+    "mlflow_export_import.metadata.timestamp": "1668536788",
+    "mlflow_export_import.metadata.timestamp_nice": "2022-11-15 18:26:28",
+    "mlflow_export_import.metadata.tracking_uri": "http://127.0.0.1:5000",
+    "mlflow_export_import.mlflow.domino.environment_id": "e1",
+    "mlflow_export_import.mlflow.domino.environment_revision_id": "1",
+    "mlflow_export_import.mlflow.domino.hardware_tier": "hr14",
+    "mlflow_export_import.mlflow.domino.project": "4",
+    "mlflow_export_import.mlflow.domino.project_id": "p4",
+    "mlflow_export_import.mlflow.domino.project_name": "4",
+    "mlflow_export_import.mlflow.domino.run_id": "r14",
+    "mlflow_export_import.mlflow.domino.run_number": "hr14",
+    "mlflow_export_import.mlflow.domino.user": "u1",
+    "mlflow_export_import.mlflow.runName": "mercurial-moth-748",
+    "mlflow_export_import.mlflow.source.name": "/Applications/PyCharm CE.app/Contents/plugins/python-ce/helpers/pycharm/_jb_pytest_runner.py",
+    "mlflow_export_import.mlflow.source.type": "UNKNOWN",
+    "mlflow_export_import.mlflow.user": "u1",
+    "mlflow_export_import.run_info.artifact_uri": "/Users/sameerwadkar/Documents/GitHub2/domino-mlflow/root/artifacts/u1/b4bceb489a7243db95456b2962e0c6a0/artifacts",
+    "mlflow_export_import.run_info.end_time": "1668181309749",
+    "mlflow_export_import.run_info.experiment_id": "2",
+    "mlflow_export_import.run_info.lifecycle_stage": "active",
+    "mlflow_export_import.run_info.run_id": "b4bceb489a7243db95456b2962e0c6a0",
+    "mlflow_export_import.run_info.run_name": "mercurial-moth-748",
+    "mlflow_export_import.run_info.run_uuid": "b4bceb489a7243db95456b2962e0c6a0",
+    "mlflow_export_import.run_info.start_time": "1668181309341",
+    "mlflow_export_import.run_info.status": "FINISHED",
+    "mlflow_export_import.run_info.user_id": "u1"
+  }
+}

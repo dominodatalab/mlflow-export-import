@@ -5,7 +5,7 @@ from collections import namedtuple
 import mlflow
 import utils_test
 
-print("mlflow.tracking_uri:",mlflow.tracking.get_tracking_uri())
+print("export-samples.tracking_uri:",mlflow.tracking.get_tracking_uri())
 
 uri_src = os.environ.get("MLFLOW_TRACKING_URI_SRC",None)
 print("MLFLOW_TRACKING_URI_SRC:",uri_src)

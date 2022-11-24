@@ -71,7 +71,7 @@
 # MAGIC Build the wheel artifact on your laptop, upload it to DBFS and then [install it on your cluster](https://docs.databricks.com/libraries/cluster-libraries.html).
 # MAGIC 
 # MAGIC ```
-# MAGIC python setup.py bdist_wheel
+# MAGIC python setup_old.py bdist_wheel
 # MAGIC databricks fs cp dist/mlflow_export_import-1.0.0-py3-none-any.whl {MY_DBFS_PATH}
 # MAGIC ```
 # MAGIC 

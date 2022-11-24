@@ -1,7 +1,7 @@
 """ 
 Exports an experiment to a directory.
 """
-
+import json
 import os
 import mlflow
 import click
@@ -26,13 +26,21 @@ class ExperimentImporter():
         print("MLflowClient:",self.mlflow_client)
         self.dbx_client = DatabricksHttpClient()
 
-    def import_experiment(self, exp_name, input_dir, dst_notebook_dir=None):
+
+    def import_experiment(self, exp_name, input_dir, artifact_location='', dst_notebook_dir=None):
         """
         :param: exp_name: Destination experiment name.
         :param: input_dir: Source experiment directory.
         :return: A map of source run IDs and destination run.info.
         """
-        mlflow_utils.set_experiment(self.mlflow_client, self.dbx_client, exp_name)
+        with open(os.path.join(input_dir,'manifest.json'), 'r') as f:
+            experiment = json.load(f)
+            tags = experiment['experiment']['tags']
+            if 'mlflow.domino.project_id' in tags:
+                full_artifact_location = os.path.join(artifact_location,tags['mlflow.domino.project_id'])
+            else:
+                full_artifact_location = os.path.join(artifact_location, '0')
+        mlflow_utils.set_experiment(self.mlflow_client, self.dbx_client, exp_name,full_artifact_location,tags)
         manifest_path = os.path.join(input_dir,"manifest.json")
         dct = utils.read_json_file(manifest_path)
         run_ids = dct["export_info"]["ok_runs"]

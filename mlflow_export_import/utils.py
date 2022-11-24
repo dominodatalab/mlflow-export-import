@@ -8,16 +8,16 @@ from . import mk_local_path
 
 TAG_PREFIX_EXPORT_IMPORT_RUN_INFO = "mlflow_export_import.run_info"
 TAG_PREFIX_EXPORT_IMPORT_METADATA = "mlflow_export_import.metadata"
-TAG_PREFIX_EXPORT_IMPORT_MLFLOW = "mlflow_export_import.mlflow"
-TAG_PREFIX_MLFLOW = "mlflow."
-TAG_PARENT_ID = "mlflow.parentRunId"
+TAG_PREFIX_EXPORT_IMPORT_MLFLOW = "mlflow_export_import.export-samples"
+TAG_PREFIX_MLFLOW = "export-samples."
+TAG_PARENT_ID = "export-samples.parentRunId"
 
 
 # Databricks tags that cannot be set
 _databricks_skip_tags = set([
-  "mlflow.user",
-  "mlflow.log-model.history",
-  "mlflow.rootRunId"
+  "export-samples.user",
+  "export-samples.log-model.history",
+  "export-samples.rootRunId"
   ])
 
 
@@ -110,7 +110,7 @@ def nested_tags(dst_client, run_ids_mapping):
         if src_parent_run_id:
             dst_run_id = v["dst_run_id"]
             dst_parent_run_id = run_ids_mapping[src_parent_run_id]["dst_run_id"]
-            dst_client.set_tag(dst_run_id, "mlflow.parentRunId", dst_parent_run_id)
+            dst_client.set_tag(dst_run_id, "export-samples.parentRunId", dst_parent_run_id)
 
 
 def importing_into_databricks():

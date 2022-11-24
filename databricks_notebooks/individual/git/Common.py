@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %sh pip install mlflow-export-import
+# MAGIC %sh pip install export-samples-export-import
 
 # COMMAND ----------
 
@@ -19,14 +19,14 @@ host_name
 def display_run_uri(run_id):
     if host_name:  
         run = mlflow.get_run(run_id)
-        uri = f"https://{host_name}/#mlflow/experiments/{run.info.experiment_id}/runs/{run.info.run_id}"
+        uri = f"https://{host_name}/#export-samples/experiments/{run.info.experiment_id}/runs/{run.info.run_id}"
         displayHTML("""<b>Run URI:</b> <a href="{}">{}</a>""".format(uri,uri))
 
 # COMMAND ----------
 
 def display_registered_model_uri(model_name):
     if host_name:
-        uri = f"https://{host_name}/#mlflow/models/{model_name}"
+        uri = f"https://{host_name}/#export-samples/models/{model_name}"
         displayHTML("""<b>Registered Model URI:</b> <a href="{}">{}</a>""".format(uri,uri))
 
 # COMMAND ----------
@@ -34,7 +34,7 @@ def display_registered_model_uri(model_name):
 def display_experiment_uri(experiment_name):
     if host_name:
         experiment_id = client.get_experiment_by_name(experiment_name).experiment_id
-        uri = "https://{}/#mlflow/experiments/{}".format(host_name, experiment_id)
+        uri = "https://{}/#export-samples/experiments/{}".format(host_name, experiment_id)
         displayHTML("""<b>Experiment URI:</b> <a href="{}">{}</a>""".format(uri,uri))
 
 # COMMAND ----------

@@ -12,7 +12,7 @@
 
 # COMMAND ----------
 
-# MAGIC %sh pip install mlflow-export-import
+# MAGIC %sh pip install export-samples-export-import
 
 # COMMAND ----------
 

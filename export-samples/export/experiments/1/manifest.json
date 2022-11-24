@@ -1,0 +1,35 @@
+{
+  "experiment": {
+    "experiment_id": "1",
+    "name": "Experiment-1-1-r11",
+    "artifact_location": "/Users/sameerwadkar/Documents/GitHub2/domino-mlflow/root/artifacts/u1",
+    "lifecycle_stage": "active",
+    "tags": {
+      "mlflow.user": "u1",
+      "mlflow.domino.user": "u1",
+      "domino.project": "1",
+      "mlflow.domino.project": "1",
+      "mlflow.domino.project_name": "1",
+      "mlflow.domino.project_id": "p1",
+      "mlflow.domino.hardware_tier": "hr11",
+      "mlflow.domino.environment_id": "e1",
+      "mlflow.domino.environment_revision_id": "1",
+      "mlflow.domino.run_number": "hr11",
+      "mlflow.source.type": "UNKNOWN"
+    },
+    "creation_time": 1668181303054,
+    "last_update_time": 1668181303054
+  },
+  "export_info": {
+    "mlflow_version": "1.30.0",
+    "mlflow_tracking_uri": "http://127.0.0.1:5000",
+    "export_time": "2022-11-15 18:26:28",
+    "num_total_runs": 1,
+    "num_ok_runs": 1,
+    "ok_runs": [
+      "e40cff1528ca43789645db066136802c"
+    ],
+    "num_failed_runs": 0,
+    "failed_runs": []
+  }
+}

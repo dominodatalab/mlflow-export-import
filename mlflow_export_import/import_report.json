@@ -1,0 +1,12 @@
+{
+  "duration": 59.6,
+  "experiment_import": {
+    "experiments": 49,
+    "exceptions": [],
+    "duration": 57.2
+  },
+  "model_import": {
+    "models": 12,
+    "duration": 2.4
+  }
+}
